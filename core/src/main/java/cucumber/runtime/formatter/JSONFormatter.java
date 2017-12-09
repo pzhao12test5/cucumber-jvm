@@ -89,7 +89,6 @@ final class JSONFormatter implements Formatter {
         }
     };
 
-    @SuppressWarnings("WeakerAccess") // Used by PluginFactory
     public JSONFormatter(Appendable out) {
         this.out = new NiceAppendable(out);
     }
@@ -170,8 +169,6 @@ final class JSONFormatter implements Formatter {
             featureMap.put("description", feature.getDescription() != null ? feature.getDescription() : "");
             featureMap.put("line", feature.getLocation().getLine());
             featureMap.put("id", TestSourcesModel.convertToId(feature.getName()));
-            featureMap.put("tags", feature.getTags());
-
         }
         return featureMap;
     }

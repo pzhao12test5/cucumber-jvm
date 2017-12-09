@@ -24,13 +24,7 @@ public class ScenarioResultTest {
     private ScenarioImpl s = new ScenarioImpl(bus, pickleEvent());
 
     @Test
-    public void no_steps_is_undefined() throws Exception {
-        assertEquals(Result.Type.UNDEFINED, s.getStatus());
-    }
-
-    @Test
-    public void one_passed_step_is_passed() throws Exception {
-        s.add(new Result(Result.Type.PASSED, 0L, null));
+    public void no_steps_is_passed() throws Exception {
         assertEquals(Result.Type.PASSED, s.getStatus());
     }
 

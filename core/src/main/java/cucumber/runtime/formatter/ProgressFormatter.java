@@ -53,7 +53,6 @@ final class ProgressFormatter implements Formatter, ColorAware {
         }
     };
 
-    @SuppressWarnings("WeakerAccess") // Used by PluginFactory
     public ProgressFormatter(Appendable appendable) {
         out = new NiceAppendable(appendable);
     }

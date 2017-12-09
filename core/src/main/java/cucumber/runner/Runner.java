@@ -92,14 +92,12 @@ public class Runner implements UnreportedStepExecutor {
 
     private TestCase createTestCaseForPickle(PickleEvent pickleEvent) {
         List<TestStep> testSteps = new ArrayList<TestStep>();
-        if (!pickleEvent.pickle.getSteps().isEmpty()) {
-            if (!runtimeOptions.isDryRun()) {
-                addTestStepsForBeforeHooks(testSteps, pickleEvent.pickle.getTags());
-            }
-            addTestStepsForPickleSteps(testSteps, pickleEvent);
-            if (!runtimeOptions.isDryRun()) {
-                addTestStepsForAfterHooks(testSteps, pickleEvent.pickle.getTags());
-            }
+        if (!runtimeOptions.isDryRun()) {
+            addTestStepsForBeforeHooks(testSteps, pickleEvent.pickle.getTags());
+        }
+        addTestStepsForPickleSteps(testSteps, pickleEvent);
+        if (!runtimeOptions.isDryRun()) {
+            addTestStepsForAfterHooks(testSteps, pickleEvent.pickle.getTags());
         }
         return new TestCase(testSteps, pickleEvent, runtimeOptions.isDryRun());
     }
