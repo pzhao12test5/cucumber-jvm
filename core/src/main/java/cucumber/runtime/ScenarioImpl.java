@@ -60,9 +60,6 @@ public class ScenarioImpl implements Scenario {
 
     @Override
     public Result.Type getStatus() {
-        if (stepResults.isEmpty()) {
-            return Result.Type.UNDEFINED;
-        }
         int pos = 0;
         for (Result stepResult : stepResults) {
             pos = Math.max(pos, SEVERITY.indexOf(stepResult.getStatus()));

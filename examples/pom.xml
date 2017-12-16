@@ -4,7 +4,7 @@
     <parent>
         <groupId>io.cucumber</groupId>
         <artifactId>cucumber-jvm</artifactId>
-        <version>2.1.1-SNAPSHOT</version>
+        <version>2.0.2-SNAPSHOT</version>
     </parent>
 
     <artifactId>cucumber-examples</artifactId>
@@ -22,7 +22,7 @@
         <profile>
             <id>java8</id>
             <activation>
-                <jdk>${java.min.version.lambda}</jdk>
+                <jdk>1.8</jdk>
             </activation>
             <modules>
                 <module>java-wicket</module>

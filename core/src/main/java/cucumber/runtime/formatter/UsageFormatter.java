@@ -46,7 +46,6 @@ final class UsageFormatter implements Formatter {
      *
      * @param out {@link Appendable} to print the result
      */
-    @SuppressWarnings("WeakerAccess") // Used by PluginFactory
     public UsageFormatter(Appendable out) {
         this.out = new NiceAppendable(out);
 

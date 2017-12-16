@@ -29,17 +29,11 @@ public abstract class AbstractTestNGCucumberTests {
      */
     @DataProvider
     public Object[][] scenarios() {
-        if (testNGCucumberRunner == null) {
-            return new Object[0][0];
-        }
         return testNGCucumberRunner.provideScenarios();
     }
 
     @AfterClass(alwaysRun = true)
     public void tearDownClass() throws Exception {
-        if (testNGCucumberRunner == null) {
-            return;
-        }
         testNGCucumberRunner.finish();
     }
 }
