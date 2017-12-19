@@ -73,9 +73,7 @@ Note that even though development is sometimes easier to do with 1.6, releasing 
 
 ## Releasing
 
-Run `mvn --version` to ensure your java version is 8 or higher.
-
-Upload privileges to the Sonatype staging repository are required.
+Upload privileges to the Sonatype staging repository and owner rights to the cucumber-jvm gem at RubyGems.org are required.
 
 First, make sure everything builds. Including Android.
 
@@ -116,6 +114,7 @@ Replace version numbers in:
 
 * examples/java-gradle/build.gradle
 * examples/android/android-studio/Cukeulator/app/build.gradle
+* examples/clojure_cukes/project.clj
 * CHANGELOG.md
 
 Make sure you can generate Javadocs for all modules, or else the
@@ -135,7 +134,7 @@ mvn --batch-mode -P release-sign-artifacts release:prepare -DautoVersionSubmodul
 mvn -P release-sign-artifacts release:perform
 ```
 
-Update the pom.xml file for the examples/android modules using `mvn versions:set` (which are not automatically updated by the release process), commit and push.
+Update the pom.xml file for the examples/android modules (which are not automatically updated by the release process), commit and push.
 
 Post release the API docs must be generated for each module and manually copied over to a working copy of the [api.cucumber.io](https://github.com/cucumber/api.cucumber.io) which must be a sibling of `cucumber-jvm` (this repo):
 
@@ -148,3 +147,6 @@ After that's done, commit and push `api.cucumber.io`
 Now, update the dependency in example projects:
 
 * https://github.com/cucumber/cucumber-java-skeleton
+
+This technique to collect coverage for a multi-module Maven project is based on a
+[blog post](http://thomassundberg.wordpress.com/2012/02/18/test-coverage-in-a-multi-module-maven-project/) by Thomas Sundberg.
