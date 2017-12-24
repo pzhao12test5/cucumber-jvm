@@ -43,7 +43,6 @@ public class JUnitOptions {
             } else if (arg.equals("--no-step-notifications") || arg.equals("--step-notifications")) {
                 stepNotifications = !arg.startsWith("--no-");
             } else{
-                printOptions();
                 throw new CucumberException("Unknown option: " + arg);
             }
         }

@@ -2,7 +2,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>io.cucumber</groupId>
     <artifactId>cucumber-jvm</artifactId>
-    <version>2.1.1-SNAPSHOT</version>
+    <version>2.0.2-SNAPSHOT</version>
     <packaging>pom</packaging>
     <name>Cucumber-JVM</name>
     <url>http://cucumber.io/</url>
@@ -48,7 +48,6 @@
         <cdi-api.version>1.2</cdi-api.version>
         <openejb-core.version>4.7.4</openejb-core.version>
         <needle.version>2.2</needle.version>
-        <java.min.version.lambda>[1.8,)</java.min.version.lambda>
         <javaee-api.version>7.0</javaee-api.version>
         <javax.inject.version>1</javax.inject.version>
         <cobertura-maven-plugin.version>2.7</cobertura-maven-plugin.version>
@@ -548,7 +547,7 @@
         <profile>
             <id>java8</id>
             <activation>
-                <jdk>${java.min.version.lambda}</jdk>
+                <jdk>1.8</jdk>
             </activation>
             <modules>
                 <module>java8</module>
@@ -587,26 +586,6 @@
                                 <goals>
                                     <goal>sign</goal>
                                 </goals>
-                            </execution>
-                        </executions>
-                    </plugin>
-
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-enforcer-plugin</artifactId>
-                        <executions>
-                            <execution>
-                                <id>enforce-java</id>
-                                <goals>
-                                    <goal>enforce</goal>
-                                </goals>
-                                <configuration>
-                                    <rules>
-                                        <requireJavaVersion>
-                                            <version>${java.min.version.lambda}</version>
-                                        </requireJavaVersion>
-                                    </rules>
-                                </configuration>
                             </execution>
                         </executions>
                     </plugin>
@@ -741,8 +720,9 @@
                     <artifactId>maven-javadoc-plugin</artifactId>
                     <version>3.0.0-M1</version>
                     <configuration>
+                        <aggregate>true</aggregate>
                         <use>false</use>
-                        <excludePackageNames>cucumber.runtime,cucumber.runtime.*,org.springframework</excludePackageNames>
+                        <excludePackageNames>cucumber.runtime,cucumber.runtime.*</excludePackageNames>
                         <links>
                             <link>http://docs.oracle.com/javase/7/docs/api/</link>
                             <link>http://junit.sourceforge.net/javadoc/</link>
